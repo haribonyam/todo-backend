@@ -23,8 +23,8 @@ public class TodoService {
         Todo todo = Todo.builder()
                 .userId(todoRequestDto.getUserId())
                 .content(todoRequestDto.getContent())
-                .status(Status.TODO) // 기본값 세팅
-                .daily(Daily.NO)     // 기본값 세팅
+                .status(Status.TODO)
+                .daily(Daily.NO)
                 .build();
         todoRepository.save(todo);
         return(todo.getId());

@@ -17,8 +17,13 @@ public class UserService {
 
     public String save(UserRequestDto userRequestDto) {
 
-        User user = userRepository.save(userRequestDto.toEntity());
+        User user = User.builder()
+                .email(userRequestDto.getEmail())
+                .nickname(userRequestDto.getNickname())
+                .password(bCryptPasswordEncoder.encode(userRequestDto.getPassword()))
+                .build();
 
+        userRepository.save(user);
         return user.getNickname();
     }
 }

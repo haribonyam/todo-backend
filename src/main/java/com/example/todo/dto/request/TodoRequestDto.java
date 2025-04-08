@@ -14,14 +14,5 @@ public class TodoRequestDto {
     private Long userId;
     private String content;
 
-    @Builder
-    public Todo toEntity() {
-
-        return
-                Todo.builder()
-                        .content(this.content)
-                        .userId(this.userId)
-                        .build();
-    }
 
 }

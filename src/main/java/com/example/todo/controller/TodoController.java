@@ -3,7 +3,6 @@ package com.example.todo.controller;
 
 import com.example.todo.dto.request.TodoRequestDto;
 import com.example.todo.dto.request.UpdateTodoRequestDto;
-import com.example.todo.dto.response.TodoResponseDto;
 import com.example.todo.service.TodoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,10 +16,10 @@ public class TodoController {
 
     private final TodoService todoService;
 
-    @GetMapping("/check")
-    public String healthCheck() {
-        return "health check";
-    }
+    /**
+     * GET--> 모든 정보 불러와서 프론트에서 연습겸 파싱 해보기
+     */
+
 
     /**
      * @param todoRequestDto
@@ -56,14 +55,16 @@ public class TodoController {
      * @param todoRequestDto
      * @return
      */
-
     @PutMapping()
     public ResponseEntity<Long> updateTodo(@RequestBody UpdateTodoRequestDto todoRequestDto) {
         return ResponseEntity.ok(todoService.updateTodo(todoRequestDto));
     }
 
-    /**
-     * GET--> 모든 정보 불러와서 프론트에서 연습겸 파싱 해보기
-     */
+    /* health check */
+    @GetMapping("/check")
+    public String healthCheck() {
+        return "health check";
+    }
+
 
 }

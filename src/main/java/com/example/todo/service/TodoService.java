@@ -48,9 +48,9 @@ public class TodoService {
         return id;
     }
 
-    public Long updateTodo(UpdateTodoRequestDto todoRequestDto) {
-        Todo todo = todoRepository.findById(todoRequestDto.getId()).orElseThrow(
-                () -> new IllegalArgumentException("Not Found : " + todoRequestDto.getId())
+    public Long updateTodo(Long id) {
+        Todo todo = todoRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("Not Found : " + id)
         );
         todo.updateStatus(todo.getStatus()==Status.TODO?Status.DONE:Status.TODO);
 

@@ -52,12 +52,12 @@ public class TodoController {
 
     /***
      * 할 일 상태 변경 (완료 NNNY,미완료 NNNN)
-     * @param todoRequestDto
+     * @param id
      * @return
      */
-    @PutMapping()
-    public ResponseEntity<Long> updateTodo(@RequestBody UpdateTodoRequestDto todoRequestDto) {
-        return ResponseEntity.ok(todoService.updateTodo(todoRequestDto));
+    @PutMapping("/{id}")
+    public ResponseEntity<Long> updateTodo(@PathVariable Long id) {
+        return ResponseEntity.ok(todoService.updateTodo(id));
     }
 
     /* health check */

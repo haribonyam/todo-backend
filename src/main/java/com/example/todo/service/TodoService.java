@@ -5,12 +5,9 @@ import com.example.todo.domain.Status;
 import com.example.todo.domain.Todo;
 import com.example.todo.dto.request.TodoRequestDto;
 import com.example.todo.dto.request.UpdateTodoRequestDto;
-import com.example.todo.dto.response.TodoResponseDto;
 import com.example.todo.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -38,9 +35,9 @@ public class TodoService {
 
     }
 
-    public Long deleteById(TodoRequestDto todoRequestDto) {
-        todoRepository.deleteById(todoRequestDto.getId());
-        return todoRequestDto.getId();
+    public Long deleteById(Long id) {
+        todoRepository.deleteById(id);
+        return id;
     }
 
     public Long updateTodo(UpdateTodoRequestDto todoRequestDto) {

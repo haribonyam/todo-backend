@@ -13,7 +13,6 @@ public class TodoRequestDto {
 
     private Long userId;
     private String content;
-    private Long id;
 
     @Builder
     public Todo toEntity(){

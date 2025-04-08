@@ -41,12 +41,10 @@ public class TodoController {
     }
     /**
      * 회원 아이디로 일반 할일 삭제
-     * @param todoRequestDto
-     * @return
      */
-    @DeleteMapping("")
-    public ResponseEntity<Long> deleteTodo(@RequestBody  TodoRequestDto todoRequestDto){
-        return ResponseEntity.ok(todoService.deleteById(todoRequestDto));
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Long> deleteTodo(@PathVariable Long id){
+        return ResponseEntity.ok(todoService.deleteById(id));
     }
 
     /***

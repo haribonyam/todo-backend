@@ -20,8 +20,8 @@ public class TodoService {
 
     /* user id 기반으로 오늘 할 일 저장 */
     public Long saveTodo(TodoRequestDto todoRequestDto) {
-        Todo todo = todoRepository.findByUserId(todoRequestDto.getUserId());
-        return(todo.getId());
+        todoRepository.save(todoRequestDto.toEntity());
+        return(todoRequestDto.getUserId());
     }
 
     public Long saveDailyToto(TodoRequestDto todoRequestDto) {

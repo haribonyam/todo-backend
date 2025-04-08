@@ -17,6 +17,10 @@ public class TodoController {
 
     private final TodoService todoService;
 
+    @GetMapping("/check")
+    public String healthCheck(){
+        return "health check";
+    }
     /**
      * @param todoRequestDto
      * @return id number

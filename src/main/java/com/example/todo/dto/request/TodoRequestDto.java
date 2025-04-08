@@ -15,13 +15,13 @@ public class TodoRequestDto {
     private String content;
 
     @Builder
-    public Todo toEntity(){
+    public Todo toEntity() {
 
         return
                 Todo.builder()
-                .content(this.content)
-                .userId(this.userId)
-                .build();
+                        .content(this.content)
+                        .userId(this.userId)
+                        .build();
     }
 
 }

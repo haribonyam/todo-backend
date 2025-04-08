@@ -34,7 +34,7 @@ public class Todo {
     private LocalDateTime createdAt;
 
     @Builder
-    public Todo(String content,Long userId,Status status,Daily daily){
+    public Todo(String content, Long userId, Status status, Daily daily) {
         this.content = content;
         this.userId = userId;
         this.status = status;
@@ -48,6 +48,7 @@ public class Todo {
     public void updateDaily(Daily daily) {
         this.daily = daily;
     }
+
     @PrePersist
     public void prePersist() {
         if (this.createdAt == null) this.createdAt = LocalDateTime.now();

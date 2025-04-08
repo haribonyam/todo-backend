@@ -12,9 +12,11 @@ import lombok.NoArgsConstructor;
 public class UserResponseDto {
 
     private String nickname;
+    private Long id;
 
     @Builder
     public UserResponseDto(User user){
+        this.id = user.getId();
         this.nickname = user.getNickname();
     }
 }

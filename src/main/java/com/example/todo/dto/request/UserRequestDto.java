@@ -15,7 +15,7 @@ public class UserRequestDto {
     private String password;
 
     @Builder
-    public User toEntity(){
+    public User toEntity() {
 
         return User.builder()
                 .email(this.email)

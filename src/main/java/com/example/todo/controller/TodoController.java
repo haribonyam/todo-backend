@@ -18,43 +18,47 @@ public class TodoController {
     private final TodoService todoService;
 
     @GetMapping("/check")
-    public String healthCheck(){
+    public String healthCheck() {
         return "health check";
     }
+
     /**
      * @param todoRequestDto
      * @return id number
      * 오늘 할 일 추가
      */
-    @PostMapping("/")
-    public ResponseEntity<Long> saveTodo(@RequestBody TodoRequestDto todoRequestDto){
+    @PostMapping()
+    public ResponseEntity<Long> saveTodo(@RequestBody TodoRequestDto todoRequestDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(todoService.saveTodo(todoRequestDto));
     }
+
     /**
      * 매일 할 일 추가
+     *
      * @param todoRequestDto
      * @return
      */
     @PostMapping("/daily")
-    public ResponseEntity<Long> saveTodoDaily(@RequestBody TodoRequestDto todoRequestDto){
+    public ResponseEntity<Long> saveTodoDaily(@RequestBody TodoRequestDto todoRequestDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(todoService.saveDailyToto(todoRequestDto));
     }
+
     /**
      * 회원 아이디로 일반 할일 삭제
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Long> deleteTodo(@PathVariable Long id){
+    public ResponseEntity<Long> deleteTodo(@PathVariable Long id) {
         return ResponseEntity.ok(todoService.deleteById(id));
     }
 
     /***
-     * 할 일 상태 변경 (완료,미완료)
+     * 할 일 상태 변경 (완료 NNNY,미완료 NNNN)
      * @param todoRequestDto
      * @return
      */
 
-    @PutMapping("")
-    public ResponseEntity<Long> updateTodo(@RequestBody UpdateTodoRequestDto todoRequestDto){
+    @PutMapping()
+    public ResponseEntity<Long> updateTodo(@RequestBody UpdateTodoRequestDto todoRequestDto) {
         return ResponseEntity.ok(todoService.updateTodo(todoRequestDto));
     }
 

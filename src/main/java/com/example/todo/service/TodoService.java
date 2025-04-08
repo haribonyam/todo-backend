@@ -7,8 +7,10 @@ import com.example.todo.dto.request.TodoRequestDto;
 import com.example.todo.dto.request.UpdateTodoRequestDto;
 import com.example.todo.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class TodoService {
@@ -24,14 +26,20 @@ public class TodoService {
                 .daily(Daily.NO)
                 .build();
         todoRepository.save(todo);
-        return(todo.getId());
+        return (todo.getId());
     }
 
     public Long saveDailyToto(TodoRequestDto todoRequestDto) {
-        Todo request = todoRequestDto.toEntity();
-               request.updateDaily(Daily.YES);
-        Todo after = todoRepository.save(request);
-        return after.getId();
+        Todo request = Todo.builder()
+                .content(todoRequestDto.getContent())
+                .daily(Daily.YES)
+                .status(Status.TODO)
+                .userId(todoRequestDto.getUserId())
+                .build();
+
+        todoRepository.save(request);
+
+        return request.getId();
 
     }
 
@@ -42,12 +50,12 @@ public class TodoService {
 
     public Long updateTodo(UpdateTodoRequestDto todoRequestDto) {
         Todo todo = todoRepository.findById(todoRequestDto.getId()).orElseThrow(
-                () -> new IllegalArgumentException("Not Found : "+todoRequestDto.getId())
+                () -> new IllegalArgumentException("Not Found : " + todoRequestDto.getId())
         );
 
-        if(todoRequestDto.getType().equals("NNNN")){
+        if (todoRequestDto.getType().equals("NNNN")) {
             todo.updateStatus(Status.TODO);
-        }else{
+        } else {
             todo.updateStatus(Status.DONE);
         }
         return todo.getId();

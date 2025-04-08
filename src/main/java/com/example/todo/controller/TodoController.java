@@ -44,7 +44,7 @@ public class TodoController {
      * @param todoRequestDto
      * @return
      */
-    @DeleteMapping("/")
+    @DeleteMapping("")
     public ResponseEntity<Long> deleteTodo(@RequestBody  TodoRequestDto todoRequestDto){
         return ResponseEntity.ok(todoService.deleteById(todoRequestDto));
     }
@@ -55,7 +55,7 @@ public class TodoController {
      * @return
      */
 
-    @PutMapping("/")
+    @PutMapping("")
     public ResponseEntity<Long> updateTodo(@RequestBody UpdateTodoRequestDto todoRequestDto){
         return ResponseEntity.ok(todoService.updateTodo(todoRequestDto));
     }

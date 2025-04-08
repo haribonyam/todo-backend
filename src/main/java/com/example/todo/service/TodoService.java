@@ -20,8 +20,14 @@ public class TodoService {
 
     /* user id 기반으로 오늘 할 일 저장 */
     public Long saveTodo(TodoRequestDto todoRequestDto) {
-        todoRepository.save(todoRequestDto.toEntity());
-        return(todoRequestDto.getUserId());
+        Todo todo = Todo.builder()
+                .userId(todoRequestDto.getUserId())
+                .content(todoRequestDto.getContent())
+                .status(Status.TODO) // 기본값 세팅
+                .daily(Daily.NO)     // 기본값 세팅
+                .build();
+        todoRepository.save(todo);
+        return(todo.getId());
     }
 
     public Long saveDailyToto(TodoRequestDto todoRequestDto) {

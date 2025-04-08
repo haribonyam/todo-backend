@@ -52,12 +52,8 @@ public class TodoService {
         Todo todo = todoRepository.findById(todoRequestDto.getId()).orElseThrow(
                 () -> new IllegalArgumentException("Not Found : " + todoRequestDto.getId())
         );
+        todo.updateStatus(todo.getStatus()==Status.TODO?Status.DONE:Status.TODO);
 
-        if (todoRequestDto.getType().equals("NNNN")) {
-            todo.updateStatus(Status.TODO);
-        } else {
-            todo.updateStatus(Status.DONE);
-        }
         return todo.getId();
     }
 }
